@@ -8,16 +8,23 @@ defmodule PdfMaker.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
-      PdfMakerWeb.Endpoint
-      # Starts a worker by calling: PdfMaker.Worker.start_link(arg)
-      # {PdfMaker.Worker, arg},
+      PdfMakerWeb.Endpoint,
+      make_pdf_spec()
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: PdfMaker.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  def make_pdf_spec() do
+    %{
+      id: MakePdf,
+      start: {
+        PdfMaker.MakePdf, :start_link, []
+      }
+    }
   end
 
   # Tell Phoenix to update the endpoint configuration
