@@ -75,7 +75,8 @@ jobs:
       - run:
           name: Compile for prod
           command: |
-            MIX_ENV=prod mix release
+            MIX_ENV=prod mix release && \
+            mix phx.digest
 
       - run:
           name: Find release...
