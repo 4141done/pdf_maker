@@ -69,7 +69,6 @@ jobs:
 
       # all steps after this run in the remote environment
       - type: setup-docker-engine
-        reusable: true
         version: 17.06.0-ce
 
       - run:
