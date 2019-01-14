@@ -14,11 +14,6 @@ jobs:
       DB_PASS: root
 
     steps:
-
-      - run:
-          name: Install wkhtmltopdf
-          command:
-
       - checkout
 
       - run: cp mix.lock mix.lock.orig
