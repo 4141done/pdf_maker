@@ -11,7 +11,7 @@ RUN apk add \
     --no-cache \
     wkhtmltopdf
 
-RUN MKDIR /opt/apps/pdf_maker
+RUN mkdir /opt/apps/pdf_maker
 
 WORKDIR /opt/apps/pdf_maker
 
