@@ -79,7 +79,7 @@ jobs:
 
       - run:
           name: Find release...
-          command: pwd && ls -lhs
+          command: pwd && ls -lhs && cd _build && tree
 
       - save_cache:
           key: pdf_maker-prod-{{ .Branch }}
@@ -95,6 +95,10 @@ jobs:
       - type: setup-docker-engine
         reusable: true
         version: 17.06.0-ce
+
+      - run:
+          name: Copy build...
+          command: cp _build/** .
 
       - run:
           name: Build docker image and publish image tagged with commit
