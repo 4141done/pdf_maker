@@ -15,4 +15,4 @@ RUN mkdir -p /opt/apps/pdf_maker
 
 WORKDIR /opt/apps/pdf_maker
 
-RUN ls -lhs
+COPY ./_build/prod/rel/pdf_maker .
