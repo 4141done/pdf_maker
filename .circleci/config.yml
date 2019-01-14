@@ -79,7 +79,7 @@ jobs:
 
       - run:
           name: Find release...
-          command: pwd && ls -lhs && cd _build && tree
+          command: pwd && ls -lhs && cd _build
 
       - save_cache:
           key: pdf_maker-prod-{{ .Branch }}
