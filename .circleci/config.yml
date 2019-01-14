@@ -35,7 +35,9 @@ jobs:
           command: |
             mix local.hex --force && mix local.rebar --force
 
-      - run: cp mix.lock mix.lock.orig
+      - run:
+          name: Set mix.lock aside
+          command: cp mix.lock mix.lock.orig
 
       - restore_cache:
           keys:
@@ -102,7 +104,7 @@ jobs:
       - run:
           name: Build docker image and publish image tagged with commit
           command: |
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
             docker build -t ciroque/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
             docker push ciroque/pdf_maker:$CIRCLE_SHA1
 workflows:
