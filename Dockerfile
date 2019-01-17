@@ -18,5 +18,9 @@ WORKDIR /opt/apps/pdf_maker
 COPY _build/prod/rel/pdf_maker .
 
 EXPOSE 4000
+ENV PORT=4000 \
+  MIX_ENV=prod \
+  REPLACE_OS_VARS=true \
+  SHELL=/bin/sh
 
-ENTRYPOINT ["bin/pdf_maker_rc_exec.sh", "start"]
+ENTRYPOINT ["bin/pdf_maker", "start"]
