@@ -7,7 +7,7 @@ defmodule PdfMaker.MakePdf do
   @moduledoc false
 
   use GenServer
-  use PdfMaker.Timing
+  use StandardLogging
 
   @behaviour PdfMaker.MakePdfBehaviour
 
@@ -34,7 +34,6 @@ defmodule PdfMaker.MakePdf do
   end
 
   def handle_call({:make_pdf, %{html: html}}, _from, state) do
-    Logger.info("#{__MODULE__}::handle_call:make_pdf ")
     pdf_content = convert_html_to_pdf(html)
     {:reply, pdf_content, state}
   end
@@ -42,9 +41,21 @@ defmodule PdfMaker.MakePdf do
   ## ##########################################################################
   ## Implementation
 
+  defp options() do
+    [
+      page_size: "Letter",
+      delete_temporary: true
+    ]
+  end
+
   defp convert_html_to_pdf(html) do
-    {:ok, filename} = PdfGenerator.generate html
-    {:ok, pdf_content} = File.read(filename)
-    pdf_content
+    case PdfGenerator.generate_binary(html, options()) do
+      {:ok, pdf_content} ->
+        info("Created PDF")
+        pdf_content
+      {:error, error} ->
+        error("Error creating PDF: #{inspect(error)}")
+        error
+    end
   end
 end
