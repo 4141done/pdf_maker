@@ -19,4 +19,4 @@ COPY _build/prod/rel/pdf_maker .
 
 EXPOSE 4000
 
-ENTRYPOINT ["bin/pdf_maker.sh", "start"]
+ENTRYPOINT ["bin/pdf_maker_rc_exec.sh", "start"]
