@@ -24,4 +24,5 @@ ENV PORT=4000 \
   REPLACE_OS_VARS=true \
   SHELL=/bin/sh
 
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["bin/pdf_maker_rc_exec.sh"]
+CMD ["foreground"]
