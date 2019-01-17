@@ -1,7 +1,4 @@
-## NOTE: This Dockerfile depends on the output from CircleCI, thus it is not very portable,
-## but it is efficient :-)
-
-FROM elixir:1.7-alpine
+FROM erlang:21-alpine
 
 RUN apk add --no-cache qt5-qtwebkit qt5-qtbase bash
 
@@ -15,9 +12,11 @@ RUN mkdir -p /opt/apps/pdf_maker
 
 WORKDIR /opt/apps/pdf_maker
 
-RUN find / -name wkhtmltopdf
+RUN WK_PATH=$(find / -name wkhtmltopdf) && echo $WK_PATH && export PATH=$WK_PATH:$PATH && echo $PATH
 
-COPY _build/prod/rel/pdf_maker .
+COPY _build/prod/rel/pdf_maker/releases/0.1.0/pdf_maker.tar.gz .
+
+RUN tar zxf pdf_maker.tar.gz && rm pdf_maker.tar.gz
 
 EXPOSE 4000
 ENV PORT=4000 \
@@ -25,4 +24,4 @@ ENV PORT=4000 \
   REPLACE_OS_VARS=true \
   SHELL=/bin/sh
 
-ENTRYPOINT ["bin/pdf_maker", "start"]
+ENTRYPOINT ["bash"]
