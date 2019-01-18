@@ -1,4 +1,4 @@
-FROM erlang:21-alpine
+FROM erlang:20-alpine
 
 RUN apk add --no-cache qt5-qtwebkit qt5-qtbase bash
 

@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: elixir:1.8-alpine
+      - image: elixir:1.7-alpine
 
     working_directory: /opt/app/pdf_maker
 
