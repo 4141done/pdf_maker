@@ -28,5 +28,7 @@ ENV PORT=4000 \
   REPLACE_OS_VARS=true \
   SHELL=/bin/sh
 
-ENTRYPOINT ["bin/pdf_maker"]
-CMD ["foreground"]
+#ENTRYPOINT ["bin/pdf_maker"]
+#CMD ["foreground"]
+
+ENTRYPOINT ["bash"]
