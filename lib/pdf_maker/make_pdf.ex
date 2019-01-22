@@ -30,6 +30,7 @@ defmodule PdfMaker.MakePdf do
   end
 
   def start_link() do
+    Logger.info("#{__MODULE__}::start_link")
     GenServer.start_link(__MODULE__, [], name: :pdf_maker)
   end
 
