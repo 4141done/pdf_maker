@@ -1,3 +1,5 @@
+
+
 FROM alpine:3.8
 
 RUN apk add --no-cache qt5-qtwebkit qt5-qtbase bash openssl
@@ -28,7 +30,5 @@ ENV PORT=4000 \
   REPLACE_OS_VARS=true \
   SHELL=/bin/sh
 
-#ENTRYPOINT ["/opt/app/pdf_maker/bin/pdf_maker"]
-#CMD ["foreground"]
-
-CMD ["bash"]
+ENTRYPOINT ["/opt/apps/pdf_maker/bin/pdf_maker"]
+CMD ["foreground"]
