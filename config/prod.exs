@@ -7,5 +7,6 @@ config :pdf_maker, PdfMakerWeb.Endpoint,
 config :pdf_generator,
        wkhtml_path: "/usr/bin/wkhtmltopdf"
 
-config :logger, level: :info
+config :phoenix, :serve_endpoints, true
 
+config :logger, level: :info
