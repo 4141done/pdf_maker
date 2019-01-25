@@ -2,6 +2,11 @@
 
 PdfMaker is a micro-service that takes HTML and generates a PDF file.
 
+## Build status
+
+[![CircleCI](https://circleci.com/gh/ciroque/pdf_maker.svg?style=svg)](https://circleci.com/gh/ciroque/pdf_maker)
+
+
 ## Installation
 
 A [Docker image](https://cloud.docker.com/u/ciroque/repository/docker/ciroque/pdf_maker) is available. 
