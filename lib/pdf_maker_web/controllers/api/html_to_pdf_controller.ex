@@ -9,6 +9,6 @@ defmodule PdfMakerWeb.HtmlToPdfController do
     |> put_resp_content_type("application/octet-stream", nil)
     |> put_resp_header("content-disposition", ~s[attachment; filename="receipt.pdf"])
     |> put_status(:created)
-    |> send(200, PdfMaker.MakePdf.make_pdf(html))
+    |> send(PdfMaker.MakePdf.make_pdf(html))
   end
 end
