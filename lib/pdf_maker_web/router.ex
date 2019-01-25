@@ -2,6 +2,7 @@ defmodule PdfMakerWeb.Router do
   use PdfMakerWeb, :router
 
   pipeline :api do
+    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
   end
 

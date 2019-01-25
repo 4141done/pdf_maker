@@ -40,7 +40,8 @@ defmodule PdfMaker.MixProject do
       {:jason, "~> 1.0"},
       {:distillery, "~> 2.0"},
       {:plug_cowboy, "~> 2.0"},
-      { :pdf_generator, ">=0.4.0" }
+      {:pdf_generator, ">=0.4.0" },
+      {:cors_plug, "~> 2.0"}
     ]
   end
 end
