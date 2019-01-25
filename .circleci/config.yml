@@ -69,16 +69,6 @@ jobs:
             - pdf_maker-prod-{{ .Branch }}
             - pdf_maker-prod-master
 
-      - run:
-          name: Compile for prod
-          command: |
-            MIX_ENV=prod mix release && \
-            mix phx.digest
-
-      - run:
-          name: Find release...
-          command: pwd && ls -lhs && cd _build && ls -lsh
-
       - save_cache:
           key: pdf_maker-prod-{{ .Branch }}
           paths:
