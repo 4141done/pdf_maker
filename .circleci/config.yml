@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: elixir:1.7-alpine
+      - image: elixir:1.8-alpine
 
     working_directory: /opt/app/pdf_maker
 
@@ -68,16 +68,6 @@ jobs:
             - pdf_maker-prod-{{ checksum "mix.lock.orig" }}
             - pdf_maker-prod-{{ .Branch }}
             - pdf_maker-prod-master
-
-      - run:
-          name: Compile for prod
-          command: |
-            MIX_ENV=prod mix release && \
-            mix phx.digest
-
-      - run:
-          name: Find release...
-          command: pwd && ls -lhs && cd _build && ls -lsh
 
       - save_cache:
           key: pdf_maker-prod-{{ .Branch }}

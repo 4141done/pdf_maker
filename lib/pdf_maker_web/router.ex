@@ -12,4 +12,11 @@ defmodule PdfMakerWeb.Router do
       post "/html", HtmlToPdfController, :create
     end
    end
+
+  scope "/options", PdfMakerWeb do
+    get "/ping", OptionsController, :ping
+    get "/fail", OptionsController, :fail
+    get "/deploy_status", OptionsController, :deploy_status
+    get "/full_stack_status", OptionsController, :full_stack_status
+  end
 end
